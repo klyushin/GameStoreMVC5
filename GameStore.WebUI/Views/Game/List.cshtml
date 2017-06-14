@@ -1,0 +1,17 @@
+﻿@using GameStore.WebUI.Models
+
+@model GamesListViewModel
+
+
+@{
+    ViewBag.Title = "Товары";
+}
+
+@foreach (var game in @Model.Games)
+{
+   @Html.Partial("GameSummary", game);
+}
+
+<div class="btn-group pull-right" >
+    @Html.PageLinks(Model.PagingInfo, i => Url.Action("List", new {page = i, category = Model.CurrentCategory }) )
+</div>

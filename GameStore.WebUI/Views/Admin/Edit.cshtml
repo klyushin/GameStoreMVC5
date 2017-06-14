@@ -1,0 +1,48 @@
+﻿@model GameStore.Domain.Entities.Game
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Админ панель: редактирование товара";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Редактирование игры "@Model.Name"</h3>        
+    </div>
+
+</div>
+
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    <div class="panel-body">
+        @Html.HiddenFor(m => m.GameId)
+        
+        @foreach (var property in ViewData.ModelMetadata.Properties)
+        {
+            if (property.PropertyName != "GameId")
+            {
+                <div class="form-group">
+                    <label>@(property.DisplayName ?? property.PropertyName)</label>
+                    @if(property.DisplayName == "Description"){
+                        @Html.TextArea(property.PropertyName, null, new {@class = "form-control", rows = 5 })
+                    }
+                    else
+                    {
+                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control"})
+                    }
+
+                    @Html.ValidationMessage(property.PropertyName)
+
+                </div>
+            }
+        }
+        <div class="panel-footer">
+            <input type="submit" value="сохранить" class="btn btn-primary"/>
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new { @class = "btn btn-default"})
+
+
+        </div>
+  
+        
+    </div>
+}
