@@ -73,14 +73,14 @@ namespace GameStore.Domain.Concrete
 
     public class EmailSettings
     {
-        public string MailToAddress = "klyushin.dmytro@gmail.com";
-        public string MailFromAddress = "klyushin.dmytro@gmail.com";
+        public string MailToAddress = "your@gmail.com";
+        public string MailFromAddress = "your@gmail.com";
         public bool UseSsl = true;
-        public string Username = "klyushin.dmytro@gmail.com";
-        public string Password = "mart uljq vycv czeh";
+        public string Username = "your@gmail.com";
+        public string Password = "your_GMAIL_pass_for_app_https://security.google.com/settings/security/apppasswords";
         public string ServerName = "smtp.gmail.com";
         public int ServerPort = 587;
         public bool WriteAsFile = false;
-        public string FileLocation = @"c:\game_store_emails";
+        public string FileLocation = @"c:\game_store_emails"; //need to create this folder beforehand
     }
 }
